@@ -5,8 +5,9 @@ import lombok.Getter;
 
 @Getter 
 @AllArgsConstructor 
-public class FormResponse {
+public class MembersResponse {
 
     private Long id;
-    private String title;
+    private String name;
+    private String email;
 }

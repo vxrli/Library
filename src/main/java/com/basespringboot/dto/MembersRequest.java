@@ -7,7 +7,10 @@ import lombok.Setter;
 
 @Getter 
 @Setter 
-public class FormRequest {
+public class MembersRequest {
     @NotBlank
-    private String title;
+    private String name;
+    
+    @NotBlank
+    private String email;
 }

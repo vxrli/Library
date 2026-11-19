@@ -7,23 +7,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.basespringboot.service.FormService;
-import com.basespringboot.dto.FormRequest;
-import com.basespringboot.dto.FormResponse;
+import com.basespringboot.service.MembersService;
+import com.basespringboot.dto.MembersRequest;
+import com.basespringboot.dto.MembersResponse;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
-@RequestMapping ("/forms")
+@RequestMapping ("/members")
 @RestController 
 @RequiredArgsConstructor 
 
-public class FormController {
-    private final FormService formService;
+public class MembersController {
+    private final MembersService formService;
 
     @PostMapping 
     @ResponseStatus(HttpStatus.CREATED)
-    public FormResponse createForm(@Valid @RequestBody FormRequest formRequest) {
-        return formService.createForm(formRequest);
+    public MembersResponse createForm(@Valid @RequestBody MembersRequest formRequest) {
+        return formService.createMember(formRequest);
     }
 }
