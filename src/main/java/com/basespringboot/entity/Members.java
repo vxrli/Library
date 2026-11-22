@@ -3,16 +3,18 @@ package com.basespringboot.entity;
 import lombok.NonNull;
 import jakarta.persistence.*;
 import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.List;
 import java.util.Date;
 
 @Entity
-@Table(name = "membres")
+@Table(name = "members")
 @Getter
 @Setter
 @RequiredArgsConstructor
+@NoArgsConstructor
 public class Members {
 
     @Id
@@ -35,10 +37,10 @@ public class Members {
     private String phone;
 
     @NonNull 
-    @Column(name = "date_inscription", nullable = false, length = 10)
+    @Column(name = "inscription_date", nullable = false, length = 10)
     private Date inscriptionDate;
 
-    @OneToMany(mappedBy = "membre", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Loan> emprunts;
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Loans> Loans;
 
 }
