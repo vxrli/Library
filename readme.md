@@ -1,37 +1,25 @@
-# baseSpringBoot
+# Library Management API
 
-A Spring Boot application using Java 21, Maven, and PostgreSQL. Docker Compose starts the application and its database together.
+Welcome to the repository of our Library Management REST API.
 
-## Requirements
+## Meet the Team
 
-- Docker Engine or Docker Desktop
-- Docker Compose (`docker-compose` command)
+This project was developed collaboratively by:
 
-## Launch
+| Name | Main Role | GitHub |
+| :--- | :--- | :--- |
+| Arthur Dufour | Backend (Books) | https://github.com/vxrli |
+| Axel Guilbert | Backend (Loans)| https://github.com/chtikirito |
+| Noa Mormentyn | Backend (Members) | https://github.com/Noa-Mormentyn |
 
-From the project root, run:
+## Project Overview
 
-```bash
-docker compose up
-```
+This project consists of building a CRUD REST API designed to manage the daily operations of a library.
 
-Compose builds the application image, starts PostgreSQL, waits for the database to become healthy, and then starts the application. On the first launch, building the image may take a few minutes.
+## Key Features
 
-Once the application has started, it is available at <http://localhost:8080>. PostgreSQL is exposed on `localhost:5433`.
+- Books Management: Add, update, list, and delete books.
 
-To run the containers in the background instead, use `docker-compose up -d`. To stop them, run `docker-compose down` from the project root.
+- Members Management: Register and manage library members.
 
-The Compose configuration uses a named volume (`postgres_data`) to retain database data when the containers are stopped.
-
-Adminer is available at <http://localhost:8081/?pgsql=postgres&username=postgres&db=base_db> for managing the PostgreSQL database through a web interface.
-
-## Reset the database
-
-If the database is in a bad state and you want to start over, run:
-
-```bash
-docker compose down -v
-docker compose up -d
-```
-
-The `-v` option deletes the database volume, so **all stored database data will be permanently removed**. The second command recreates the containers in the background.
+- Loans Management: Allow members to borrow books,
