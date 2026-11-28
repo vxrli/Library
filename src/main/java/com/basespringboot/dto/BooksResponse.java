@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 @AllArgsConstructor
@@ -14,7 +14,7 @@ public class BooksResponse {
     private Long id;
     private String title;
     private String author;
-    private Date publicationDate;
+    private LocalDate publicationDate;
     private String isbn;
     private Integer stock;
 }
