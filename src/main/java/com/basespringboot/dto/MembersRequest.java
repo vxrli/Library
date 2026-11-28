@@ -4,7 +4,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -22,5 +22,5 @@ public class MembersRequest {
 
     private String phone;
 
-    private Date inscriptionDate;
+    private LocalDate inscriptionDate;
 }

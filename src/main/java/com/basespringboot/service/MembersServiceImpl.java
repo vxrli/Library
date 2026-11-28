@@ -23,8 +23,7 @@ public class MembersServiceImpl implements MembersService {
     @Override
     @Transactional
     public MembersResponse createMembers(MembersRequest membersRequest) {
-        if (membersRepository.findAll().stream()
-            .anyMatch(member -> Objects.equals(member.getEmail(), membersRequest.getEmail()))) {
+        if (membersRepository.findByEmail(membersRequest.getEmail()).isPresent()) {
             throw new RuntimeException("Member with email " + membersRequest.getEmail() + " already exists");
         }
         Members members = new Members();
@@ -33,8 +32,15 @@ public class MembersServiceImpl implements MembersService {
         members.setEmail(membersRequest.getEmail());
         members.setPhone(membersRequest.getPhone());
         members.setInscriptionDate(membersRequest.getInscriptionDate());
-        Members savedMembers = membersRepository.save(members);
-        return toResponse(savedMembers);
+        return toResponse(membersRepository.save(members));
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<MembersResponse> searchByNom(String nom) {
+        return membersRepository.findByNameContainingIgnoreCase(nom).stream()
+                .map(this::toResponse)
+                .toList();
     }
 
     @Override
@@ -49,16 +55,6 @@ public class MembersServiceImpl implements MembersService {
     @Transactional(readOnly = true)
     public List<MembersResponse> getAllMembers() {
         return membersRepository.findAll().stream()
-                .map(this::toResponse)
-                .toList();
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<MembersResponse> searchByNom(String nom) {
-        return membersRepository.findAll().stream()
-            .filter(member -> member.getName() != null
-                && member.getName().toLowerCase(Locale.ROOT).contains(nom.toLowerCase(Locale.ROOT)))
                 .map(this::toResponse)
                 .toList();
     }

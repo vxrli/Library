@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.List;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "members")
@@ -37,8 +37,8 @@ public class Members {
     private String phone;
 
     @NonNull 
-    @Column(name = "inscription_date", nullable = false, length = 10)
-    private Date inscriptionDate;
+    @Column(name = "inscription_date", nullable = false)
+    private LocalDate inscriptionDate;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Loans> Loans;

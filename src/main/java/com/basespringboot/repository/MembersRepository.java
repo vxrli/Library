@@ -12,7 +12,7 @@ public interface MembersRepository extends JpaRepository<Members, Long> {
 
     Optional<Members> findByEmail(String email);
 
-    List<Members> findByNomContainingIgnoreCase(String name);
+    List<Members> findByNameContainingIgnoreCase(String name);
 
-    List<Members> findByPrenomContainingIgnoreCase(String firstName);
+    List<Members> findByFirstNameContainingIgnoreCase(String firstName);
 }

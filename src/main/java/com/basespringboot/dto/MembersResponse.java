@@ -1,6 +1,6 @@
 package com.basespringboot.dto;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -16,5 +16,5 @@ public class MembersResponse {
     private String firstName;
     private String email;
     private String phone;
-    private Date inscriptionDate;
+    private LocalDate inscriptionDate;
 }
