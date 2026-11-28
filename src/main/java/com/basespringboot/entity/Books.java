@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.List;
-import java.util.Date;
+import java.time.LocalDate;
 import lombok.NonNull;
 import lombok.NoArgsConstructor;
 
@@ -30,8 +30,8 @@ public class Books {
     private String author;
 
     @NonNull
-    @Column(name = "publication_date", length = 10)
-    private Date publicationDate;
+    @Column(name = "publication_date")
+    private LocalDate publicationDate;
 
     @NonNull 
     @Column(unique = true, length = 13)
